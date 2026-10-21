@@ -1,0 +1,12 @@
+# Pinned for reproducible Maia-3 exports. Python 3.13, macOS (Core ML export and
+# parity checks need macOS). coremltools 9.0 is tested only up to torch 2.7.
+torch==2.7.0
+numpy==2.3.5
+onnx==1.23.1
+onnxruntime==1.30.0
+coremltools==9.0
+chess==1.11.2
+huggingface_hub==2.1.1
+protobuf==7.36.2
+sympy==1.14.0
+maia3 @ git+https://github.com/CSSLab/maia3@1e13597c42d4858b7cfd7cfdae01e297263364b2

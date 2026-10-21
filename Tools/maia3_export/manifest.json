@@ -1,0 +1,287 @@
+{
+  "generated_by": "Tools/maia3_export/export_maia3.py",
+  "maia3_commit": "1e13597c42d4858b7cfd7cfdae01e297263364b2",
+  "tools": {
+    "python": "3.13.14",
+    "torch": "2.7.0",
+    "numpy": "2.3.5",
+    "onnx": "1.23.1",
+    "onnxruntime": "1.30.0",
+    "coremltools": "9.0",
+    "chess": "1.11.2"
+  },
+  "tolerances": {
+    "fp32_atol": 0.0001,
+    "fp32_rtol": 1e-05,
+    "fp16_max_legal_prob": 0.001
+  },
+  "models": {
+    "maia3-5m": {
+      "checkpoint": {
+        "repo": "UofTCSSLab/Maia3-5M",
+        "revision": "b6559de2398d7140b985f28fd2c19fb5e47ddabe",
+        "filename": "maia3-5m.pt",
+        "bytes": 20968049,
+        "sha256": "ba14208b2992d85502f5fb501934abf6aaaeb355e9f3fdf90e326911f562524f"
+      },
+      "parity_samples": 41,
+      "artifacts": [
+        {
+          "file": "maia3-5m.onnx",
+          "format": "onnx",
+          "precision": "fp32",
+          "parity_passed": true,
+          "parity": {
+            "onnxruntime_cpu": {
+              "move_logits": 1.811981201171875e-05,
+              "value_logits": 2.9802322387695312e-06,
+              "ponder": 4.76837158203125e-07,
+              "legal_probs": 3.7981934044029053e-06,
+              "top1_agree": "41/41"
+            }
+          },
+          "bytes": 21346652,
+          "sha256": "85d867fa98bef61b058da306558736a9a1a096511cbeca712a0392feb2b49325"
+        },
+        {
+          "file": "maia3-5m-fp32.mlpackage",
+          "format": "mlpackage",
+          "precision": "fp32",
+          "parity_passed": true,
+          "parity": {
+            "coreml_cpu_only": {
+              "move_logits": 1.71661376953125e-05,
+              "value_logits": 2.7418136596679688e-06,
+              "ponder": 3.5762786865234375e-07,
+              "legal_probs": 3.5911274003375127e-06,
+              "top1_agree": "41/41"
+            },
+            "coreml_all": {
+              "move_logits": 1.9073486328125e-05,
+              "value_logits": 1.7881393432617188e-06,
+              "ponder": 2.384185791015625e-07,
+              "legal_probs": 2.7868114819140644e-06,
+              "top1_agree": "41/41"
+            }
+          },
+          "bytes": 21267584,
+          "content_sha256": "fe67b2d408d2f4596d002b0ba144877a7a6e121058bad040425ff1ff4e797eca",
+          "files": {
+            "Data/com.apple.CoreML/model.mlmodel": {
+              "bytes": 333015,
+              "sha256": "3297ae136c8b743de7bd2d723fd24deb3d1db6940cb022dae171e6c2f0da85e7"
+            },
+            "Data/com.apple.CoreML/weights/weight.bin": {
+              "bytes": 20933952,
+              "sha256": "04ed8eec809080ceeffa498836866aee6ac568384a02638c24722a8119101c38"
+            },
+            "Manifest.json": {
+              "bytes": 617,
+              "sha256": "4e6803c3ce74531e70e89fe0356ad9f564beb927feb1c741a00c54fb766b263c"
+            }
+          }
+        },
+        {
+          "file": "maia3-5m-fp16.mlpackage",
+          "format": "mlpackage",
+          "precision": "fp16",
+          "parity_passed": false,
+          "parity": {
+            "coreml_cpu_only": {
+              "move_logits": 0.15413856506347656,
+              "value_logits": 0.016893863677978516,
+              "ponder": 0.0014464259147644043,
+              "legal_probs": 0.017574511434980844,
+              "top1_agree": "40/41"
+            },
+            "coreml_all": {
+              "move_logits": 0.026941299438476562,
+              "value_logits": 0.0035288333892822266,
+              "ponder": 0.00047078728675842285,
+              "legal_probs": 0.0028753997277737864,
+              "top1_agree": "41/41"
+            }
+          }
+        }
+      ]
+    },
+    "maia3-23m": {
+      "checkpoint": {
+        "repo": "UofTCSSLab/Maia3-23M",
+        "revision": "51a0145a8178046f7de23119160b136672deeb2b",
+        "filename": "maia3-23m.pt",
+        "bytes": 91799307,
+        "sha256": "bce6cd1af5f0399ac7eed33fabb7a6a2ef6193662c2740f262bf93af7bfb3569"
+      },
+      "parity_samples": 41,
+      "artifacts": [
+        {
+          "file": "maia3-23m.onnx",
+          "format": "onnx",
+          "precision": "fp32",
+          "parity_passed": true,
+          "parity": {
+            "onnxruntime_cpu": {
+              "move_logits": 4.100799560546875e-05,
+              "value_logits": 4.172325134277344e-06,
+              "ponder": 3.8743019104003906e-07,
+              "legal_probs": 4.339080457660405e-06,
+              "top1_agree": "41/41"
+            }
+          },
+          "bytes": 92181609,
+          "sha256": "17aa9b6829a7cd5a7e3ae40a2d656a58ffbe9a3ed3c2e5fffb96a5f53fb3aba5"
+        },
+        {
+          "file": "maia3-23m-fp32.mlpackage",
+          "format": "mlpackage",
+          "precision": "fp32",
+          "parity_passed": true,
+          "parity": {
+            "coreml_cpu_only": {
+              "move_logits": 2.86102294921875e-05,
+              "value_logits": 2.1457672119140625e-06,
+              "ponder": 3.7997961044311523e-07,
+              "legal_probs": 1.9475594972284682e-06,
+              "top1_agree": "41/41"
+            },
+            "coreml_all": {
+              "move_logits": 2.384185791015625e-05,
+              "value_logits": 3.2186508178710938e-06,
+              "ponder": 3.7997961044311523e-07,
+              "legal_probs": 2.357950457609892e-06,
+              "top1_agree": "41/41"
+            }
+          },
+          "bytes": 92102336,
+          "content_sha256": "d55d6c6824a656271990a653adfed8869f5c6cb56a9c1b28b08ab0b69f4985a8",
+          "files": {
+            "Data/com.apple.CoreML/model.mlmodel": {
+              "bytes": 336663,
+              "sha256": "2ad8f3c627f86fe42b00866732c0d3e8a3c87910cd6d788d42942a28b3980bba"
+            },
+            "Data/com.apple.CoreML/weights/weight.bin": {
+              "bytes": 91765056,
+              "sha256": "47dd0c300826999b1af33b48e4e70b76ac0c4a5c0e8ff189c1abbac3e1622f87"
+            },
+            "Manifest.json": {
+              "bytes": 617,
+              "sha256": "71028424d24069a593bad77e4f2d6d32c5ac896890b3674b8938bd3d605488fc"
+            }
+          }
+        },
+        {
+          "file": "maia3-23m-fp16.mlpackage",
+          "format": "mlpackage",
+          "precision": "fp16",
+          "parity_passed": false,
+          "parity": {
+            "coreml_cpu_only": {
+              "move_logits": 0.2517843246459961,
+              "value_logits": 0.01572561264038086,
+              "ponder": 0.003954336047172546,
+              "legal_probs": 0.029538975403526735,
+              "top1_agree": "40/41"
+            },
+            "coreml_all": {
+              "move_logits": 0.03469276428222656,
+              "value_logits": 0.004367828369140625,
+              "ponder": 0.0007196664810180664,
+              "legal_probs": 0.0038334713734188286,
+              "top1_agree": "41/41"
+            }
+          }
+        }
+      ]
+    },
+    "maia3-79m": {
+      "checkpoint": {
+        "repo": "UofTCSSLab/Maia3-79M",
+        "revision": "a107d6ceb7b298cb04ae1da4edffe2939858b894",
+        "filename": "maia3-79m.pt",
+        "bytes": 315651851,
+        "sha256": "3fc6181d5db789b45a15305732148757ae74efa3e0028e81ba335b462dac45c2"
+      },
+      "parity_samples": 41,
+      "artifacts": [
+        {
+          "file": "maia3-79m.onnx",
+          "format": "onnx",
+          "precision": "fp32",
+          "parity_passed": true,
+          "parity": {
+            "onnxruntime_cpu": {
+              "move_logits": 0.00012969970703125,
+              "value_logits": 5.4836273193359375e-06,
+              "ponder": 9.5367431640625e-07,
+              "legal_probs": 6.435214968125713e-06,
+              "top1_agree": "41/41"
+            }
+          },
+          "bytes": 316034244,
+          "sha256": "c9952ebf555f69c0af80ff5829d70aa97c3d5d0192e937493f3cd62d6829e1f5"
+        },
+        {
+          "file": "maia3-79m-fp32.mlpackage",
+          "format": "mlpackage",
+          "precision": "fp32",
+          "parity_passed": true,
+          "parity": {
+            "coreml_cpu_only": {
+              "move_logits": 6.389617919921875e-05,
+              "value_logits": 4.291534423828125e-06,
+              "ponder": 4.6193599700927734e-07,
+              "legal_probs": 6.989499932830157e-06,
+              "top1_agree": "41/41"
+            },
+            "coreml_all": {
+              "move_logits": 0.0001125335693359375,
+              "value_logits": 4.5299530029296875e-06,
+              "ponder": 3.129243850708008e-07,
+              "legal_probs": 2.068734631488489e-06,
+              "top1_agree": "41/41"
+            }
+          },
+          "bytes": 315963098,
+          "content_sha256": "a347b206a9da970d9e347a64f12139bc247ff3cd1150061eb6f7bcc6d11b4d9e",
+          "files": {
+            "Data/com.apple.CoreML/model.mlmodel": {
+              "bytes": 336689,
+              "sha256": "7b6f38524a9c8d477b198a56efa8f7e62d59f57386c74bc2500c64f9ec1d15ae"
+            },
+            "Data/com.apple.CoreML/weights/weight.bin": {
+              "bytes": 315625792,
+              "sha256": "64dbe4d3a39afb02f099bdd8e79101e9ab41089b9ebe81a18c01c59307ec3e56"
+            },
+            "Manifest.json": {
+              "bytes": 617,
+              "sha256": "e73cbf4691d340a7e5ac7b79b5d26bfddf445cd946b6e0231aae05448abbd231"
+            }
+          }
+        },
+        {
+          "file": "maia3-79m-fp16.mlpackage",
+          "format": "mlpackage",
+          "precision": "fp16",
+          "parity_passed": false,
+          "parity": {
+            "coreml_cpu_only": {
+              "move_logits": 0.35965538024902344,
+              "value_logits": 0.014246463775634766,
+              "ponder": 0.0034280121326446533,
+              "legal_probs": 0.02124745674148698,
+              "top1_agree": "41/41"
+            },
+            "coreml_all": {
+              "move_logits": 0.06287765502929688,
+              "value_logits": 0.0025760531425476074,
+              "ponder": 0.00034993886947631836,
+              "legal_probs": 0.0032107131540338174,
+              "top1_agree": "41/41"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
