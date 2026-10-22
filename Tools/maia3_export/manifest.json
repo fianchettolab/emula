@@ -283,5 +283,20 @@
         }
       ]
     }
+  },
+  "release": {
+    "tag": "0.1.0",
+    "assets": {
+      "maia3-23m": {
+        "file": "maia3-23m-fp32.mlpackage.zip",
+        "bytes": 85039871,
+        "sha256": "87f3f8cd9b3c7842d4c4b6117e79f625f124655579bbfb42188cad53bb1fc273"
+      },
+      "maia3-5m": {
+        "file": "maia3-5m-fp32.mlpackage.zip",
+        "bytes": 19377230,
+        "sha256": "bdfbb30a71e07dc680673ca641de1dbf1c45f69d811f8c9b4ba3c78264164316"
+      }
+    }
   }
 }

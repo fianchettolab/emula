@@ -66,8 +66,9 @@ ship (about 92 MB in fp32, about 5 ms a move on an iPhone 17); 5M is for the tes
 
 ## Building
 
-During development, Emula and Scacchi are checked out next to each other
-(`../scacchi`, built once with its `build-xcframework.sh`). Then:
+Scacchi comes from its release, so building needs no Rust. To change Scacchi alongside,
+check it out, build it with its `build-xcframework.sh`, and use it as a local package
+override (in Xcode, or `swift package edit scacchi --path ../scacchi`). Then:
 
 ```bash
 Tools/maia3_export/install_model.sh --to Tools/maia3_export/out

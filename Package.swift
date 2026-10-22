@@ -9,8 +9,8 @@ let package = Package(
         .library(name: "Emula", targets: ["Emula"]),
     ],
     dependencies: [
-        // The chess rules: the shakmaty bridge, checked out next to this one.
-        .package(path: "../scacchi"),
+        // The chess rules: the shakmaty bridge.
+        .package(url: "https://github.com/fianchettolab/scacchi", from: "0.1.0"),
     ],
     targets: [
         .target(name: "Emula", dependencies: [.product(name: "Scacchi", package: "scacchi")]),
