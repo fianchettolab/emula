@@ -35,8 +35,7 @@ Xcode compiles it into the app. In order:
 
 1. **The release download.** When `manifest.json` has a `release` entry, the script
    downloads the model's zip from that GitHub release and checks its SHA-256 against the
-   entry. It needs only `curl`, `shasum` and `unzip` (and `gh`, while the repo is
-   private). A zip that doesn't match is refused.
+   entry. It needs only `curl`, `shasum` and `unzip`. A zip that doesn't match is refused.
 2. **An existing export** in `out/`, when its content hash matches `manifest.json`.
 3. **A new export** from the pinned checkpoint (Core ML only, using a scratch manifest so
    the committed one isn't touched), setting up `.venv` if needed. It refuses to install a
