@@ -100,8 +100,8 @@ Worked examples **[run]**:
 
 ### 3.3 The two history modes
 
-The model accepts either; **both are specified, and the app picks one after on-device
-testing.**
+The model accepts either; **both are specified**, and Emula offers both
+(`MaiaHistoryMode`).
 
 **(a) Current position × 8**: the official engine's default and the Android app's only
 mode. Without `--use-uci-history`, the history deque holds just the current position
@@ -255,7 +255,7 @@ Elos 800–2200):
 | Core ML fp16, same | Converts (10 MB) but probabilities differ by up to 1.9e-2 (CPU) / 2.3e-3 (all units). Top-1 still 5/5. **Fails the 1e-3 parity target.** |
 
 Mac latency for the exported Core ML fp32 models (Apple M3, batch 1, warm, 50 runs). This
-says little about iPhones; step 7 measures those.
+says little about iPhones; `docs/maia3-perf.md` measures those.
 
 | Model | CPU only, p50 / p95 | All compute units, p50 / p95 | Load |
 |---|---|---|---|
@@ -263,10 +263,11 @@ says little about iPhones; step 7 measures those.
 | 23M | 6.7 / 7.0 ms | 7.1 / 12.1 ms | 0.8 s |
 | 79M | 20.8 / 21.3 ms | 17.4 / 23.9 ms | 1.2 s |
 
-**Model choice (owner):** 23M is bundled and is the app's opponent. 79M as an optional
-download is #24. 5M is kept for fast tests only.
+**Model choice:** 23M is the model to ship: fast enough on an iPhone (`docs/maia3-perf.md`)
+at about 92 MB. 79M is 316 MB, and the paper shows little gain over 23M. 5M is for fast
+tests.
 
-### Step 2 export results
+### Export results
 
 `Tools/maia3_export/export_maia3.py` exports all three models (see its README). Each export
 is checked on 41 positions: fixed openings, middlegames, endgames, castling, en passant
@@ -307,17 +308,17 @@ must satisfy section 2 with batch 1, and the Swift side owns everything else:
 moves while the cumulative probability is ≤ p, always keep the top move, exclude the
 crossing move), so the Python fixtures match.
 
-**Settled (app):** both history modes (3.3) are offered as the "Maia Sees" setting. The
-app defaults to (b), real history (the last 8 positions); (a), current position ×8, is the
-official engine's default and the alternative. `MaiaResult.wdl` is for the current
-position, not per candidate as the engine reports it.
+**Settled:** both history modes (3.3) are offered (`MaiaHistoryMode`): (a), current
+position ×8, the official engine's default, and (b), real history (the last 8 positions).
+The caller picks one; they play differently. `MaiaResult.wdl` is for the current position,
+not per candidate as the engine reports it.
 
 ## 12. Verification run
 
 Scripts were run outside the repo (Python 3.13, maia3 @ `1e13597`, python-chess 1.11.2,
 torch 2.14.1 for the encoding checks, torch 2.7.0 + coremltools 9.0 + onnxruntime 1.30.0
 for conversion). They print the tokens, vocabulary indices, state-dict check, top-5 and WDL
-quoted above. Step 2 turns them into the reproducible `Tools/maia3_export/` pipeline.
+quoted above. `Tools/maia3_export/` turns them into a reproducible pipeline.
 
 Other results from the run, 5M, start position, current ×8:
 
@@ -331,4 +332,4 @@ Other results from the run, 5M, start position, current ×8:
 
 - Meaning and units of the ponder head (section 7).
 - Whether training used the per-frame mirroring that mode (b) produces (section 3.3).
-- iPhone latency and memory for any runtime (step 7).
+- Latency and memory on older iPhones; only an iPhone 17 is measured (`docs/maia3-perf.md`).

@@ -1,17 +1,14 @@
 # Maia-3 performance
 
-How fast and how heavy the bundled Maia-3 model is on real hardware, measured in
-[Fianchetto Lab](https://github.com/fianchettolab/fianchetto) ("the app" below).
-**Target:** warm inference for the bundled model under 100 ms on a recent iPhone. The
-brief set it for 5M, but it now applies to 23M, the model the app ships.
+How fast and how heavy Maia-3 23M, the model to ship, is on real hardware through Emula.
+**Target:** warm inference under 100 ms on a recent iPhone.
 
 ## How to measure
 
-The results below come from a temporary in-app benchmark, `MaiaBenchmarkLab.swift`
-(Settings → Lab), removed once they were recorded. To measure again, for example on
-another device or after changing the model, restore it from the app's git history (it's in the
-commit that removed it) and add its Settings entry back. Run a **Release** build on the
-device: Debug builds of Emula are slower, and the results must reflect what users get.
+The results below come from a benchmark screen in an iOS app that bundles the 23M model,
+run on the device. To measure again, for example on another device or after changing the
+model, run the same steps from an app. Use a **Release** build: Debug builds of Emula are
+slower, and the results must reflect what users get.
 
 For each Core ML compute-unit setting (`all`, `cpuAndNeuralEngine`, `cpuAndGPU`,
 `cpuOnly`), the benchmark:
@@ -25,10 +22,9 @@ For each Core ML compute-unit setting (`all`, `cpuAndNeuralEngine`, `cpuAndGPU`,
 4. reports the memory iOS counts against the app (`phys_footprint`) after loading, and
    the process peak at the end.
 
-The **cold load** is the app's own first load: the Game tab loads the model when the app
-starts. To measure it, force-quit the app, wait a moment, relaunch, and run the
-benchmark. The very first launch after installing is slower, because Core ML specializes
-the model for the device.
+The **cold load** is the first load after the app starts. To measure it, force-quit the
+app, wait a moment, relaunch, and run the benchmark. The very first launch after
+installing is slower, because Core ML specializes the model for the device.
 
 Let the device cool between runs; the benchmark prints the thermal state.
 
@@ -53,7 +49,7 @@ Only an iPhone 17 is available for now. An older device is still to be found.
 ### Mac, for reference
 
 Apple M3, coremltools 9.0 calling Core ML from Python, fp32 models, batch 1, warm, 50 runs
-on an all-zero input. These come from the step 2 export work, not from the benchmark:
+on an all-zero input. These come from the export work, not from the benchmark:
 
 | Model | CPU only, p50 / p95 | All compute units, p50 / p95 | Load |
 |---|---|---|---|
@@ -73,8 +69,7 @@ the Mac's CPU, so its numbers don't represent any iPhone.
   loading fails). The four settings are within about 1 ms of each other per move, and
   `all` loads fastest once the device has specialized the model (86 ms, against
   273–497 ms for the others).
-- **No loading state needed.** The model starts loading at launch, and the cold load
-  (about 0.7 s, or about 3 s on the first launch after installing) mostly finishes behind
-  the logo animation, which runs for over 3 s. If the first move comes before it's done,
-  Maia's turn simply waits for it while the status shows "Maia is thinking…".
+- **Load early.** The cold load takes about 0.7 s, or about 3 s on the first launch after
+  installing, so start creating the `MaiaSession` when the app starts rather than at
+  Maia's first move.
 - **Memory is modest:** about 77 MB after loading, 95 MB at peak.

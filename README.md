@@ -5,8 +5,8 @@ Swift: it plays the move a human of a given rating would play, fully on the devi
 
 *Emula* is Italian for a rival who competes by imitating, which is what Maia does.
 
-It's built for [Fianchetto Lab](https://github.com/fianchettolab/fianchetto), a chess app
-for iOS, and comes as-is. It isn't affiliated with CSSLab or the Maia project.
+It's part of [Fianchetto Lab](https://github.com/fianchettolab), a set of chess
+experiments, and comes as-is. It isn't affiliated with CSSLab or the Maia project.
 
 ## What it does
 
@@ -60,8 +60,9 @@ Tools/maia3_export/install_model.sh --to <your app>/Maia
 ```
 
 The script downloads the model from this repo's release and checks its SHA-256 against
-`manifest.json`, or exports it from the pinned checkpoint (Python 3.13). The app uses
-23M (about 92 MB in fp32, about 5 ms a move on an iPhone 17); 5M is for the tests.
+`manifest.json`, or exports it from the pinned checkpoint (Python 3.13). 23M is the one to
+ship (about 92 MB in fp32, about 5 ms a move on an iPhone 17); 5M is for the tests, and 79M
+(316 MB) adds little over 23M.
 
 ## Building
 

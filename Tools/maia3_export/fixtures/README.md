@@ -5,7 +5,7 @@ The source of truth for the Swift port. Generated from the upstream PyTorch mode
 
 | File | Model | Use |
 |---|---|---|
-| `maia3-23m-fixtures.json` | 23M (bundled in the app) | parity of the shipped model |
+| `maia3-23m-fixtures.json` | 23M | parity of the model to ship |
 | `maia3-5m-fixtures.json` | 5M | fast tests |
 
 Both files use the same 201 positions, each in both history modes: 402 cases. Regenerating
