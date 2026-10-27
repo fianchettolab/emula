@@ -23,6 +23,8 @@ let result = try await session.bestMove(
 result.move        // in UCI, for example "g1f3"
 result.topMoves    // the most likely moves with their probabilities
 result.wdl         // win, draw and loss for the side to move
+
+maia3Commit        // the CSSLab/maia3 commit the port and its models follow
 ```
 
 The chess rules come from [Scacchi](https://github.com/fianchettolab/scacchi). The model

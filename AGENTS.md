@@ -23,7 +23,7 @@ engine code.
 
 - **Models for the tests:** `Tools/maia3_export/install_model.sh --to Tools/maia3_export/out`
   and the same with `--model 5m`. The model tests skip without them.
-- **Tests:** `swift test` (23, about 30 s on the Mac) checks the encoder against the
+- **Tests:** `swift test` (25, about 30 s on the Mac) checks the encoder against the
   Python fixtures, Scacchi's legal moves against python-chess, both models' parity, the
   sampler and seeded self-play. Keep builds free of warnings in the Swift 6 language mode.
 - **The Python side** (export, fixtures, parity) needs Python 3.13 and macOS; see the
@@ -48,6 +48,10 @@ engine code.
 - **History modes:** both are supported (`MaiaHistoryMode`). The current position eight
   times is the official engine's default; the last eight positions is upstream's
   `--use-uci-history`. They play differently, so callers choose.
+- **`maia3Commit` reports the upstream** (apps show it next to Emula's own version):
+  Maia-3 has no releases, so the commit is its version. A test checks it against
+  `manifest.json` and the models' Core ML metadata; moving to a new upstream commit
+  changes it with `MAIA3_COMMIT`, the spec and a re-export.
 - **Chess rules** come from Scacchi only; don't add another chess library. Squares are
   rank-first in both (a1 = 0).
 - **Concurrency:** `MaiaSession` is an actor and calls Core ML's synchronous
