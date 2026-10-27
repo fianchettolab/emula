@@ -285,7 +285,7 @@
     }
   },
   "release": {
-    "tag": "0.1.0",
+    "tag": "0.2.0",
     "assets": {
       "maia3-23m": {
         "file": "maia3-23m-fp32.mlpackage.zip",
