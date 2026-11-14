@@ -23,7 +23,7 @@ engine code.
 
 - **Models for the tests:** `Tools/maia3_export/install_model.sh --to Tools/maia3_export/out`
   and the same with `--model 5m`. The model tests skip without them.
-- **Tests:** `swift test` (25, about 30 s on the Mac) checks the encoder against the
+- **Tests:** `swift test` (about 30 s on the Mac) checks the encoder against the
   Python fixtures, Scacchi's legal moves against python-chess, both models' parity, the
   sampler and seeded self-play. Keep builds free of warnings in the Swift 6 language mode.
 - **The Python side** (export, fixtures, parity) needs Python 3.13 and macOS; see the
